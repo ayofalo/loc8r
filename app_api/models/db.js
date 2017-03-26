@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 //mongoose.connect(dbURI);
 var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
-  dbURI = 'mongodb://heroku_rpjkjb99:6mtmgn82b8cvnfctqfo8s1j02i@ds119380.mlab.com:19380/heroku_rpjkjb99'; //process.env.MONGOLAB_URI;
+  dbURI = process.env.MONGOLAB_URI; //process.env.MONGOLAB_URI;
 }
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function() { //Monitoring the connection event
