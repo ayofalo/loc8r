@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 //mongoose.connect(dbURI);
 var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI; //process.env.MONGOLAB_URI;
+  dbURI = process.env.MONGODB_URI; //process.env.MONGOLAB_URI;
 }
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function() { //Monitoring the connection event
