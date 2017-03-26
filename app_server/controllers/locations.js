@@ -4,6 +4,7 @@ var apiOptions = { //set default server URL for local development
   server :"http://localhost:3000"
 };
 if(process.env.NODE_ENV === 'production'){
+  console.log("Connected")
   apiOptions.server = "https://damp-thicket-63414.herokuapp.com "; //if the application running in production mode set different base URL; change to be live address of application
 }
 
