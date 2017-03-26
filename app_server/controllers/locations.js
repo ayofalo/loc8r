@@ -80,8 +80,8 @@ module.exports.homelist = function(req, res){
     method: "GET",
     json: {},
     qs : {
-      lng: -0.7992599,//determines response.
-      lat: 51.378091,
+      lng: -0.9690884,//determines response.
+      lat: 51.455041,
       maxDistance : 20000
     }
   };
