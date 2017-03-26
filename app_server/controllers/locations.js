@@ -5,7 +5,7 @@ var apiOptions = { //set default server URL for local development
 };
 if(process.env.NODE_ENV === 'production'){
   console.log("Connected")
-  apiOptions.server = "https://damp-thicket-63414.herokuapp.com "; //if the application running in production mode set different base URL; change to be live address of application
+  apiOptions.server = "https://damp-thicket-63414.herokuapp.com/"; //if the application running in production mode set different base URL; change to be live address of application
 }
 
 //Rendering function for homelist
