@@ -10,9 +10,8 @@ if (process.platform === "win32") { /*process as a property that stores pltform 
 }
 
 var mongoose = require('mongoose');
-//var dbURI = 'mongodb://localhost/lock8r';
-//mongoose.connect(dbURI);
 var dbURI = 'mongodb://localhost/Loc8r';
+
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGODB_URI; //process.env.MONGOLAB_URI;
 }
