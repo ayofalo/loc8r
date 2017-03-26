@@ -15,9 +15,11 @@
     "debug": "~2.6.0",
     "express": "~4.14.1",
     "jade": "~1.11.0",
+    "mocha": "2.2.4",
     "mongoose": "^4.8.4",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.2",
-    "readline": "0.0.x"
+    "readline": "0.0.x",
+    "request": "^2.81.0",
+    "serve-favicon": "~2.3.2"
   }
 }
