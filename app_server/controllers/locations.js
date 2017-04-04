@@ -10,16 +10,7 @@ if(process.env.NODE_ENV === 'production'){
 
 //Rendering function for homelist
 
-var renderHomepage = function(req, res, responseBody){
-  var message;
-  if(!(responseBody instanceof Array)){// Instance of array is used to know whether responseBody is an array. If the response isnt array, set message, and set responseBody to be empty array.
-    message = "API lookup error"; //We set it has an empty array to avoid errors associated to string.
-    responseBody = [];
-  } else{
-    if(!responseBody.length){ // if response is array with no length, set message
-      message = "No place found nearby";
-    }
-  }
+var renderHomepage = function(req, res){
   res.render('locations-list',{ 
     title:'Loc8r- find a place to work with wifi',
     pageHeader:{
@@ -27,8 +18,7 @@ var renderHomepage = function(req, res, responseBody){
       strapline:'Find places to work with wifi near you!'
     },
     sidebar: "looking for wifi and a seat? Lock8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint?Let Loc8r help you find the place you're looking for.",
-    locations: responseBody,//the location array takes in the response from the API 
-    message: message //Add message to variables to send to view
+   
   });
 };
 
@@ -73,33 +63,9 @@ var getLocationInfo = function(req, res, callback){
     );
 };
 /*GET home page*/
-module.exports.homelist = function(req, res){
-  var requestOptions, path;
-  path = '/api/locations'; //set path for API request (server is already set at top of file
-  requestOptions = { 
-    url : apiOptions.server + path,
-    method: "GET",
-    json: {},
-    qs : {
-      lng: -0.9690884,//determines response.
-      lat: 51.455041,
-      maxDistance : 20000
-    }
-  };
-  request( //Making  request to API, sending through request options
-    requestOptions,
-    function(err, response, body){//The call back receives the response from the API
-      var i, data; // We initialised this variables to be used in sorting the response 
-      data = body;
-      if (response.statusCode === 200 && data.length){
-      for(i=0; i<data.length; i++){
-        data[i].distance = _formatDistance(data[i].distance);// loop through array fromatting distance value of location
-      }
-    }
-      renderHomepage(req, res, data); // Send modified data to be rendered instead of original body
-    }
-  );
-};
+module.exports.homelist = function(req, res){ // handles and manages request to api untop of the mongo database
+      renderHomepage(req, res); // Send modified data to be rendered instead of original body
+    };
 var _formatDistance = function(distance){
   var numDistance, unit;
   if(distance > 10000){// if suplied distance is over 10000 convert to KM

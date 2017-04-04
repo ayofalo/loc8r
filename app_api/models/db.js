@@ -12,6 +12,7 @@ if (process.platform === "win32") { /*process as a property that stores pltform 
 var mongoose = require('mongoose');
 //var dbURI = 'mongodb://localhost/lock8r';
 //mongoose.connect(dbURI);
+mongoose.Promise = require('bluebird');
 var dbURI = 'mongodb://localhost/Loc8r';
 
 if (process.env.NODE_ENV === 'production') {

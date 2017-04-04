@@ -69,16 +69,21 @@ module.exports.locationsListByDistance = function(req, res) {
     maxDistance: 20000,
     num: 10
   };
+
   if ((!lng && lng!==0)||(!lat && lat!==0))  {
     sendJSONresponse(res, 404, {
       "message": "lng, lat and maxDistance query parameters are all required"
     });
     return;
   }
+  console.log(geoOptions);
+  console.log(point);
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
+    console.log(results);
     var locations = [];
     if (err) {
       sendJSONresponse(res, 404, err);
+      console.log(err);
     } else {
         results.forEach(function(doc) {
            locations.push({
@@ -91,6 +96,7 @@ module.exports.locationsListByDistance = function(req, res) {
             });
           });
          sendJSONresponse(res, 200, locations);
+         console.log(locations);
     }
   });
 };
